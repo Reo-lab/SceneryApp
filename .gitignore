@@ -1,3 +1,4 @@
 config/credentials.yml.enc
 config/master.key
 tmp/cache/*
+log/*
