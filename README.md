@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用技術
+| カテゴリ | 技術内容 |
+| --- | --- | 
+| サーバーサイド | Ruby on Rails 7.2.2.1・Ruby 3.3.0 |
+| フロントエンド | Ruby on Rails |
+| CSS |  |
+| データベースサーバー | 開発：mysql/本番：AWS S3想定|
+| アプリケーションサーバー | |
+| バージョン管理ツール | GitHub・Git Flow |
+ ...
