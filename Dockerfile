@@ -3,6 +3,7 @@ FROM ruby:3.3.0
 # 必要なパッケージをインストール
 RUN apt-get update -qq && apt-get install -y nodejs npm mariadb-client
 
+RUN apt-get update && apt-get install -y libvips
 # 作業ディレクトリを指定
 WORKDIR /app
 

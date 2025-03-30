@@ -1,3 +1,8 @@
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 <%= form_with(model: image, url: images_path, local: true) do |form| %>
   <div class="container mt-4">
     <div class="row justify-content-center">
