@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   before_action :require_login
   def index
-    @images = Image.all
+    @images = Image.order(created_at: :desc)
   end
 
   def show

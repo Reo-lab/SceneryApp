@@ -7,7 +7,9 @@
           <p><%= image.description %></p>
 
           <% if image.photo.attached? %>
-            <%= image_tag image.photo, class: 'img-fluid mb-1' %>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal<%= image.id %>">
+              <%= image_tag image.photo, class: 'img-fluid mb-1' %>
+            </a>
           <% else %>
             <p>画像がありません</p>
           <% end %>
@@ -19,6 +21,20 @@
           </p>
         </div>
       </div>
+
+      <div class="modal fade" id="imageModal<%= image.id %>" tabindex="-1" aria-labelledby="imageModalLabel<%= image.id %>" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl"> 
+          <div class="modal-content" style="background-color: transparent; border: none;">
+            <div class="modal-header" style="border-bottom: none; ">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="padding: 0; display: flex; justify-content: center; align-items: center; height: 100%;">
+              <%= image_tag image.photo, style: "max-width: 100%; max-height: 80vh; object-fit: contain; object-position: center;" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <% end %>
   </div>
 </div>
