@@ -15,10 +15,12 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.images.build(image_params)
     if @image.save
+      resized_image = @image.photo.variant(resize_to_limit: [1920, 1080]).processed
+      @image.photo.attach(io: StringIO.new(resized_image.download), filename: @image.photo.filename.to_s, content_type: @image.photo.content_type)
       redirect_to root_path, notice: "写真が投稿されました！"
     else
-      logger.error "Image save failed: #{@image.errors.full_messages.join(", ")}"
-      redirect_to root_path, alert: "写真の投稿に失敗しました。"
+      flash.now[:alert] = @image.errors.full_messages.join(", ")
+      redirect_to new_image_path, alert: @image.errors.full_messages.join(", ")
     end
   end
 
