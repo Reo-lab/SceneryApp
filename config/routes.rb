@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "login", to: "sessions#new", as: "new_session"
+  post "login", to: "sessions#create", as: "session"
+  delete "logout", to: "sessions#destroy", as: "logout"
   resources :image_categorizations
   resources :image_types
   resources :images

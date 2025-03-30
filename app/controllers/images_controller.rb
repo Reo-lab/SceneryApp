@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :require_login
   def index
     @images = Image.all
   end
@@ -12,7 +13,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
+    @image = current_user.images.build(image_params)
     if @image.save
       redirect_to root_path, notice: "写真が投稿されました！"
     else
@@ -44,5 +45,11 @@ class ImagesController < ApplicationController
 
   def image_params
     params.require(:image).permit(:title, :description, :photo)
+  end
+
+  def require_login
+    unless logged_in?
+      redirect_to new_session_path, alert: "ログインしてください。"
+    end
   end
 end
